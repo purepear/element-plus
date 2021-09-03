@@ -10,16 +10,12 @@ import {
   ref,
   watch,
   provide,
-  onUnmounted,
 } from 'vue'
 import type { PropType, Ref } from 'vue'
-import mitt, { Emitter } from 'mitt'
+import type { CollapseProvider } from './collapse.type'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '@element-plus/utils/constants'
 
-export interface CollapseProvider {
-  activeNames: Ref
-  collapseMitt: Emitter
-}
+
 export default defineComponent({
   name: 'ElCollapse',
   props: {
@@ -34,7 +30,6 @@ export default defineComponent({
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT],
   setup(props, { emit }) {
     const activeNames = ref([].concat(props.modelValue))
-    const collapseMitt: Emitter = mitt()
 
     const setActiveNames = _activeNames => {
       activeNames.value = [].concat(_activeNames)
@@ -71,15 +66,9 @@ export default defineComponent({
       },
     )
 
-    collapseMitt.on('item-click', handleItemClick)
-
-    onUnmounted(() => {
-      collapseMitt.all.clear()
-    })
-
-    provide('collapse', {
+    provide<CollapseProvider>('collapse', {
       activeNames,
-      collapseMitt,
+      handleItemClick,
     })
 
     return {
