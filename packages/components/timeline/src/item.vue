@@ -7,7 +7,8 @@
       class="el-timeline-item__node"
       :class="[
         `el-timeline-item__node--${size || ''}`,
-        `el-timeline-item__node--${type || ''}`
+        `el-timeline-item__node--${type || ''}`,
+        hollow ? 'el-timeline-item__node--hollow' : ''
       ]"
       :style="{
         backgroundColor: color
@@ -78,6 +79,10 @@ export default defineComponent({
     icon: {
       type: String,
       default: '',
+    },
+    hollow: {
+      type: Boolean,
+      default: false,
     },
   },
   setup() {

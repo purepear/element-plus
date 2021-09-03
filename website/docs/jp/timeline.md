@@ -124,13 +124,13 @@
 ### タイムライン-アイテム属性
 | Attribute      | Description    | Type      | Accepted Values | Default   |
 |---------- |-------- |---------- |-------------  |-------- |
-| timestamp     | タイムスタンプコンテンツ | string  | - | — |
+| timestamp     | タイムスタンプコンテンツ | string  | — | — |
 | hide-timestamp  | タイムスタンプを表示するかどうか | boolean | — | false |
 | placement | タイムスタンプ位置 | string | top / bottom | bottom |
-| type | ノード型 | string | primary / success / warning / danger / info | - |
-| color | ノードの背景色 | string | hsl / hsv / hex / rgb | - |
+| type | ノード型 | string | primary / success / warning / danger / info | — |
+| color | ノードの背景色 | string | hsl / hsv / hex / rgb | — |
 | size | ノードサイズ | string | normal / large | normal |
-| icon | アイコンクラス名 | string | — | - |
+| icon | アイコンクラス名 | string | — | — |
 
 ### タイムラインアイテムスロット
 | name | Description |

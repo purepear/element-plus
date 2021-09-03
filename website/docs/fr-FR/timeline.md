@@ -125,13 +125,13 @@ Le timestamp peut être placé au-dessus du contenu lorsque celui-ci est trop ha
 
 | Attribut      | Description    | Type      | Valeurs acceptées | Défaut   |
 |---------- |-------- |---------- |-------------  |-------- |
-| timestamp     | Le contenu du timestamp. | string  | - | — |
+| timestamp     | Le contenu du timestamp. | string  | — | — |
 | hide-timestamp  | Si le timestamp doit être affiché. | boolean | — | false |
 | placement | La position du timestamp. | string | top / bottom | bottom |
-| type | Le type de noeud. | string | primary / success / warning / danger / info | - |
-| color | La couleur de fond du noeud. | string | hsl / hsv / hex / rgb | - |
+| type | Le type de noeud. | string | primary / success / warning / danger / info | — |
+| color | La couleur de fond du noeud. | string | hsl / hsv / hex / rgb | — |
 | size | La taille du noeud | string | normal / large | normal |
-| icon | Le nom de classe de l'icône. | string | — | - |
+| icon | Le nom de classe de l'icône. | string | — | — |
 
 ### Slots de Timeline-Item
 
