@@ -31,9 +31,16 @@ export interface RootMenuProvider {
     removeSubMenu: (item: RegisterMenuItem) => void
     openMenu: (index: string, indexPath: Ref<string[]>) => void
     closeMenu: (index: string) => void
+    handleMenuItemClick: (item: {
+      index: string
+      indexPath: ComputedRef<string[]>
+      route?: any
+    }) => void
+    handleSubMenuClick: (submenu: {
+      index: string
+      indexPath: ComputedRef<string[]>
+    }) => void
   }
-  rootMenuEmit: Emitter['emit']
-  rootMenuOn: Emitter['on']
 }
 
 export interface SubMenuProvider {
