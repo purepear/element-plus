@@ -83,8 +83,8 @@ export default defineComponent({
       changeEvent: changeEvent,
     } as any))
 
-    watch(() => props.modelValue, val => {
-      elFormItem.formItemMitt?.emit('el.form.change', [val])
+    watch(() => props.modelValue, () => {
+      elFormItem.validate?.('change')
     })
 
     const handleKeydown = e => { // 左右上下按键 可以在radio组内切换不同选项

@@ -185,7 +185,7 @@ export default defineComponent({
       }
 
       if (props.validateEvent) {
-        elFormItem.formItemMitt?.emit('el.form.change', [actualValue.value])
+        elFormItem.validate?.('change')
       }
     })
 

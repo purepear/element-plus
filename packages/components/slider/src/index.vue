@@ -314,7 +314,7 @@ const useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
         initData.firstValue = val[0]
         initData.secondValue = val[1]
         if (valueChanged()) {
-          elFormItem.formItemMitt?.emit('el.form.change', [minValue.value, maxValue.value])
+          elFormItem.validate?.('change')
           initData.oldValue = val.slice()
         }
       }
@@ -326,7 +326,7 @@ const useWatch = (props, initData, minValue, maxValue, emit, elFormItem) => {
       } else {
         initData.firstValue = val
         if (valueChanged()) {
-          elFormItem.formItemMitt?.emit('el.form.change', val)
+          elFormItem.validate?.('change')
           initData.oldValue = val
         }
       }

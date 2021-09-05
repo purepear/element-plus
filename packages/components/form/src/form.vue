@@ -13,8 +13,7 @@
 <script lang="ts">
 import { computed, defineComponent, provide, reactive, ref, toRefs, watch } from 'vue'
 import { FieldErrorList } from 'async-validator'
-import mitt from 'mitt'
-import { elFormEvents, elFormKey } from '@element-plus/tokens'
+import { elFormKey } from '@element-plus/tokens'
 
 import type { PropType } from 'vue'
 import type { ComponentSize } from '@element-plus/utils/types'
@@ -97,16 +96,13 @@ export default defineComponent({
   },
   emits: ['validate'],
   setup(props, { emit }) {
-    const formMitt = mitt()
-
     const fields: FormItemCtx[] = []
 
     watch(
       () => props.rules,
       () => {
         fields.forEach(field => {
-          field.removeValidateEvents()
-          field.addValidateEvents()
+          field.evaluateValidationEnabled()
         })
 
         if (props.validateOnRuleChange) {
@@ -115,17 +111,18 @@ export default defineComponent({
       },
     )
 
-    formMitt.on<FormItemCtx>(elFormEvents.addField, field => {
+
+    const addField = (field: FormItemCtx) => {
       if (field) {
         fields.push(field)
       }
-    })
+    }
 
-    formMitt.on<FormItemCtx>(elFormEvents.removeField, field => {
+    const removeField = (field: FormItemCtx) => {
       if (field.prop) {
         fields.splice(fields.indexOf(field), 1)
       }
-    })
+    }
 
     const resetFields = () => {
       if (!props.model) {
@@ -219,12 +216,13 @@ export default defineComponent({
     }
 
     const elForm = reactive({
-      formMitt,
       ...toRefs(props),
       resetFields,
       clearValidate,
       validateField,
       emit,
+      addField,
+      removeField,
       ...useFormLabelWidth(),
     })
 

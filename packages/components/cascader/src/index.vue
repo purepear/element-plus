@@ -311,7 +311,7 @@ export default defineComponent({
       set (val) {
         emit(UPDATE_MODEL_EVENT, val)
         emit(CHANGE_EVENT, val)
-        elFormItem.formItemMitt?.emit('el.form.change', [val])
+        elFormItem.validate?.('change')
       },
     })
 

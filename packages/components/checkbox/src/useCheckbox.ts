@@ -182,8 +182,8 @@ const useEvent = (props: IUseCheckboxProps, { isLimitExceeded }: PartialReturnTy
     emit('change', value, e)
   }
 
-  watch(() => props.modelValue, val => {
-    elFormItem.formItemMitt?.emit('el.form.change', [val])
+  watch(() => props.modelValue, () => {
+    elFormItem.validate?.('change')
   })
 
   return {

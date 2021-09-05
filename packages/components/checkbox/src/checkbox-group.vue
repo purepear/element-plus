@@ -74,8 +74,8 @@ export default defineComponent({
       changeEvent,
     })
 
-    watch(() => props.modelValue, val => {
-      elFormItem.formItemMitt?.emit('el.form.change', [val])
+    watch(() => props.modelValue, () => {
+      elFormItem.validate?.('change')
     })
   },
 })

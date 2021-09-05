@@ -193,8 +193,8 @@ export default defineComponent({
 
     const panelFilterPlaceholder = computed(() => props.filterPlaceholder || t('el.transfer.filterPlaceholder'))
 
-    watch(() => props.modelValue, val => {
-      elFormItem.formItemMitt?.emit('el.form.change', val)
+    watch(() => props.modelValue, () => {
+      elFormItem.validate?.('change')
     })
 
     const optionRender = computed(() => option => {
